@@ -1,0 +1,494 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-height: 100vh;
+    /* background-image: url('png/mapCenter.png'); */
+    /* background-size: 32px 32px; */
+    /* display: flex; */
+    /* flex-direction: column;
+    align-items: center; */
+    /* overflow: hidden; */
+}
+
+canvas {
+    /* background-color: transparent; */
+    z-index: 2;
+
+    position: absolute;
+    min-height: 320px;
+    min-width: 640px;
+    cursor: url(png/sword.cur), pointer;
+}
+
+#cnv2 {
+    z-index: 3;
+}
+
+#cnv3 {
+    z-index: 4;
+}
+
+/*cnv4*/
+canvas:last-of-type {
+    z-index: 5;
+    /* border-top: 32px solid rgba(0, 0, 0, 0.5); */
+}
+
+.gameWrapper {
+    /* margin: auto; */
+    position: relative;
+    width: 640px;
+    height: 320px;
+    overflow: hidden;
+}
+
+.gameWrapper>span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.gameShader {
+    /* border-left: 32px solid rgba(0, 0, 0, .5);
+    border-right: 32px solid rgba(0, 0, 0, .5);
+    border-top: 32px solid rgba(0, 0, 0, .5);
+    border-bottom: 64px solid rgba(0, 0, 0, .5); */
+    z-index: 6;
+}
+
+.gameBackground {
+    z-index: 0;
+    background-color: black;
+}
+
+.mainMenu {
+    position: absolute;
+    top: 0px;
+
+}
+
+.goldAmount {
+    box-sizing: border-box;
+    position: absolute;
+    top: 5px;
+    left: 484px;
+    width: 132px;
+    height: 40px;
+    font-size: 21px;
+    background-color: rgba(0, 0, 0, .6);
+    border: solid 2px grey;
+    z-index: 7;
+    line-height: 36px;
+    padding-left: 36px;
+    font-weight: bold;
+    color: rgba(218, 165, 32, 1);
+
+    text-shadow: 3px 3px 10px #000000;
+    pointer-events: none;
+
+}
+
+.goldAmount::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    width: 32px;
+    top: 2px;
+    height: 32px;
+    background-image: url("png/goldCoinSprite.png");
+    background-size: cover;
+    animation: coinRotate .618s steps(4) infinite;
+
+}
+
+.menuOpen {
+    position: absolute;
+    top: 5px;
+    left: 595px;
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    border: 2px gray solid;
+    cursor: url(png/sword.cur), pointer;
+
+    z-index: 7;
+}
+
+
+.menuOpen::after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 10%;
+    background-color: gray;
+}
+
+.menuOpen::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    height: 70%;
+    background-color: gray;
+}
+
+.gameMenu {
+    z-index: 8;
+    position: absolute;
+    left: 595px;
+    top: 45px;
+    display: none;
+    flex-direction: column;
+    height: 160px;
+    width: 40px;
+    background-color: transparent;
+    cursor: url(png/sword.cur), pointer;
+
+
+}
+
+.gameMenu>.btnTower {
+    position: relative;
+    border: none;
+    flex-basis: 40px;
+    text-decoration: none;
+    background-image: url("png/towerAll.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    cursor: url(png/sword.cur), pointer;
+    outline: none;
+}
+
+.gameMenu>.btnTower::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(-200% - 5px);
+    width: 200%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    border: 1px solid gray;
+    display: none;
+    z-index: 8;
+
+}
+
+.gameMenu>.btnTower:hover::after {
+    display: block;
+}
+
+.gameMenu>.btnTower::before {
+    color: rgba(255, 189, 22, 0.9);
+
+    text-shadow: 3px 3px 10px #000000;
+    content: "Cost: 50";
+    position: absolute;
+    top: 0;
+    left: calc(-200% - 5px);
+    height: 100%;
+    line-height: 40px;
+    padding-left: 5px;
+    font-size: 18px;
+    display: none;
+    z-index: 9;
+
+}
+
+.gameMenu>.btnTower:hover::before {
+    display: block;
+}
+
+.gameMenu>.btnTower:focus {
+    flex-basis: 40px;
+    text-decoration: none;
+    background-image: url("png/towerAll.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    outline-offset: 1px;
+
+    background-color: rgba(218, 165, 32, .9);
+
+
+    background-origin: border-box;
+
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+
+.gameMenu>.btnTowerActive {
+    border: 3px solid goldenrod;
+
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.btnTower2 {
+    background-position: -40px 0;
+}
+
+.btnTower3 {
+    background-position: -80px 0;
+}
+
+.btnTower4 {
+    background-position: -120px 0;
+}
+
+/* chwilowka  */
+.resume {
+    position: fixed;
+    z-index: 8;
+    top: 0;
+    left: 100px;
+}
+
+.tower1,
+.tower2,
+.tower3 {
+    background-image: url("png/towerAll.png");
+    cursor: url(png/sword.cur), pointer;
+
+
+    z-index: 6;
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    transform: scale(1);
+    animation: buildingAnimation linear .3s;
+}
+
+.tower2 {
+    background-position: -32px 0;
+}
+
+.tower3 {
+    background-position: -64px 0;
+}
+
+.tower1::after,
+.tower2::after,
+.tower3::after {
+    display: none;
+    width: 165.22px;
+    height: 165.22px;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(transparent, #e66465);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+.tower2::after {
+    width: 129.42px;
+    height: 129.42px
+}
+
+.tower3::after {
+    width: 370px;
+    height: 370px;
+}
+
+.tower1:hover::after,
+.tower2:hover::after,
+.tower3:hover::after {
+    display: block;
+}
+
+@keyframes buildingAnimation {
+    /* 0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    } */
+
+
+    0% {
+        transform: scale(1);
+
+    }
+
+    25% {
+        transform: scale(1.618);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.618);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.minion {
+    animation: minionWalk linear 19s forwards;
+
+    background-image: url("png/minionBlue.png");
+    /* background-color: transparent; */
+    cursor: url(png/sword.cur), pointer;
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+    z-index: 7;
+    position: fixed;
+
+    top: 0;
+    left: 608px;
+}
+
+.minion:nth-of-type(even) {
+    background-image: url("png/minionPink.png");
+
+}
+
+
+
+.minionAlive {
+    background-image: url("png/minionBlue.png");
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+    background-size: 32px 32px;
+    z-index: 3;
+
+    top: 300px;
+    left: 0;
+}
+
+.destroyMinion {
+    background-image: url("png/minionBlue.png");
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+    background-position: 0 0;
+    z-index: 3;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+}
+
+.coin {
+    height: 16px;
+    width: 16px;
+
+    background-image: url('png/goldCoinSprite.png');
+    background-position: 0 0;
+    z-index: 9999;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    transition: top .5s .3s;
+    animation: coinRotate 1s steps(8) infinite;
+
+    cursor: url(png/sword.cur), pointer;
+}
+
+@keyframes coinRotate {
+    100% {
+        background-position: 128px 0;
+    }
+}
+
+@keyframes minionWalk {
+
+    100% {
+        left: 640px
+    }
+
+
+    /*
+    0%{
+       left: 0;
+       transform: rotateY(0);
+    }
+    50%{
+        left:608px;
+        transform: rotateY(0);
+        
+    }
+    50.1%{
+        left:608px;
+        transform: rotateY(180deg);
+        
+        
+    }
+    99.9%{
+        left: 0;
+        transform: rotateY(180deg);
+    }
+    100%{
+        left:0;
+        transform: rotateY(0);
+       
+    }
+    */
+}
+
+.btnGameover {
+    position: fixed;
+    z-index: 7;
+}
+
+.bloodScreen {
+    position: absolute;
+    left: 0;
+    top: -392px;
+    z-index: 10;
+    background-color: transparent;
+    width: 640px;
+    height: 392px;
+
+    background-image: url(png/gameover.png);
+    background-size: contain;
+
+    animation: bloodScreen 3s both linear;
+}
+
+@keyframes bloodScreen {
+    100% {
+        top: 0;
+    }
+}
+
+/* .btnGameover{
+    position: absolute;
+    z-index: 10;
+    top: 10vh;
+    left: 10vh;
+    cursor: url('png/sword.cur'), pointer;
+} */
