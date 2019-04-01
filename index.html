@@ -14,36 +14,39 @@
 </head>
 
 <body>
-    <button class="resume">next wave</button>
-
-    <button class="btnGameover">Game OVER</button>
     <div class="gameWrapper">
+        <div class="life"></div>
+
+
+        <button class="resume">next wave</button>
+
+        <div class="mainMenu">
+            <div class="goldAmount"></div>
+            <div class="menuOpen"></div>
+        </div>
+
+        <div class="gameMenu">
+            <button id="tower1" class="btnTower btnTower1"></button>
+            <button id="tower2" class="btnTower btnTower2"></button>
+            <button id="tower3" class="btnTower btnTower3"></button>
+            <button id="tower4" class="btnTower btnTower4"></button>
+        </div>
         <canvas id="cnv" width="640" height="320px"></canvas>
         <canvas id="cnv2" width="640" height="320px"></canvas>
         <canvas id="cnv3" width="640" height="320px"></canvas>
         <canvas id="cnv4" width="640" height="320px"></canvas>
+        <canvas id="cnv5" width="640" height="320px"></canvas>
+
         <span class="gameShader"></span>
         <span class="gameBackground"></span>
     </div>
 
-    <div class="mainMenu">
-        <div class="goldAmount"></div>
-        <div class="menuOpen"></div>
-    </div>
-
-    <div class="gameMenu">
-        <button id="tower1" class="btnTower btnTower1"></button>
-        <button id="tower2" class="btnTower btnTower2"></button>
-        <button id="tower3" class="btnTower btnTower3"></button>
-        <button id="tower4" class="btnTower btnTower4"></button>
-    </div>
 
 
 
-    <!-- <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <script src="jquery.js"></script>
 

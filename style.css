@@ -2,10 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 body {
-    max-height: 100vh;
+    background-image: linear-gradient(-90deg, rgb(3, 3, 71), rgb(22, 22, 219), blue, rgb(22, 22, 219), rgb(3, 3, 71));
     /* background-image: url('png/mapCenter.png'); */
     /* background-size: 32px 32px; */
     /* display: flex; */
@@ -14,36 +15,79 @@ body {
     /* overflow: hidden; */
 }
 
+/* TOWER RENDER */
+
 canvas {
     /* background-color: transparent; */
     z-index: 2;
-
     position: absolute;
     min-height: 320px;
     min-width: 640px;
     cursor: url(png/sword.cur), pointer;
 }
 
+/* TOWER RENDER */
+
 #cnv2 {
     z-index: 3;
 }
+
+/* TOWER RENDER */
 
 #cnv3 {
     z-index: 4;
 }
 
+/* TOWER RENDER */
+
+#cnv4 {
+    z-index: 6;
+}
+
 /*cnv4*/
+/* TOWER RENDER */
 canvas:last-of-type {
     z-index: 5;
     /* border-top: 32px solid rgba(0, 0, 0, 0.5); */
 }
 
 .gameWrapper {
-    /* margin: auto; */
+    margin: auto;
     position: relative;
     width: 640px;
     height: 320px;
     overflow: hidden;
+    z-index: 7;
+}
+
+.gameWrapper>button {
+    position: absolute;
+    z-index: 7;
+
+    height: 40px;
+    width: 100px;
+    transform: translateX(10%);
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, .6);
+
+    color: rgba(218, 165, 32, 1);
+    text-shadow: 3px 3px 10px #000000;
+    border-radius: 15px;
+    cursor: url(png/sword.cur), pointer;
+    /* display: none; */
+}
+
+.btnGameover {
+    /* z-index: 7; */
+    left: 0;
+}
+
+.resume {
+    z-index: 8;
+    top: 0;
+    left: 0;
 }
 
 .gameWrapper>span {
@@ -63,7 +107,7 @@ canvas:last-of-type {
 
 .gameBackground {
     z-index: 0;
-    background-color: black;
+    background-color: transparent;
 }
 
 .mainMenu {
@@ -100,7 +144,7 @@ canvas:last-of-type {
     width: 32px;
     top: 2px;
     height: 32px;
-    background-image: url("png/goldCoinSprite.png");
+    background-image: url("https://i.postimg.cc/x1kMG2w1/gold-Coin-Sprite.png");
     background-size: cover;
     animation: coinRotate .618s steps(4) infinite;
 
@@ -113,7 +157,7 @@ canvas:last-of-type {
     width: 40px;
     height: 40px;
     display: block;
-    background-color: whitesmoke;
+    background-color: black;
     border-radius: 50%;
     border: 2px gray solid;
     cursor: url(png/sword.cur), pointer;
@@ -164,12 +208,12 @@ canvas:last-of-type {
     border: none;
     flex-basis: 40px;
     text-decoration: none;
-    background-image: url("png/towerAll.png");
+    background-image: url("https://i.postimg.cc/xjxX6ZyJ/towerAll.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
     border-radius: 50%;
-    background-color: whitesmoke;
+    background-color: rgba(0, 0, 0, .6);
     cursor: url(png/sword.cur), pointer;
     outline: none;
 }
@@ -216,7 +260,7 @@ canvas:last-of-type {
 .gameMenu>.btnTower:focus {
     flex-basis: 40px;
     text-decoration: none;
-    background-image: url("png/towerAll.png");
+    background-image: url("https://i.postimg.cc/xjxX6ZyJ/towerAll.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -253,216 +297,6 @@ canvas:last-of-type {
     background-position: -120px 0;
 }
 
-/* chwilowka  */
-.resume {
-    position: fixed;
-    z-index: 8;
-    top: 0;
-    left: 100px;
-}
-
-.tower1,
-.tower2,
-.tower3 {
-    background-image: url("png/towerAll.png");
-    cursor: url(png/sword.cur), pointer;
-
-
-    z-index: 6;
-    position: fixed;
-    width: 32px;
-    height: 32px;
-    background-size: cover;
-    transform: scale(1);
-    animation: buildingAnimation linear .3s;
-}
-
-.tower2 {
-    background-position: -32px 0;
-}
-
-.tower3 {
-    background-position: -64px 0;
-}
-
-.tower1::after,
-.tower2::after,
-.tower3::after {
-    display: none;
-    width: 165.22px;
-    height: 165.22px;
-
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    background: radial-gradient(transparent, #e66465);
-    border-radius: 50%;
-    content: "";
-    pointer-events: none;
-}
-
-.tower2::after {
-    width: 129.42px;
-    height: 129.42px
-}
-
-.tower3::after {
-    width: 370px;
-    height: 370px;
-}
-
-.tower1:hover::after,
-.tower2:hover::after,
-.tower3:hover::after {
-    display: block;
-}
-
-@keyframes buildingAnimation {
-    /* 0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    } */
-
-
-    0% {
-        transform: scale(1);
-
-    }
-
-    25% {
-        transform: scale(1.618);
-    }
-
-    50% {
-        transform: scale(1);
-    }
-
-    75% {
-        transform: scale(1.618);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.minion {
-    animation: minionWalk linear 19s forwards;
-
-    background-image: url("png/minionBlue.png");
-    /* background-color: transparent; */
-    cursor: url(png/sword.cur), pointer;
-    width: 32px;
-    height: 32px;
-    background-size: 32px 32px;
-    z-index: 7;
-    position: fixed;
-
-    top: 0;
-    left: 608px;
-}
-
-.minion:nth-of-type(even) {
-    background-image: url("png/minionPink.png");
-
-}
-
-
-
-.minionAlive {
-    background-image: url("png/minionBlue.png");
-    position: relative;
-
-    width: 32px;
-    height: 32px;
-    background-size: 32px 32px;
-    z-index: 3;
-
-    top: 300px;
-    left: 0;
-}
-
-.destroyMinion {
-    background-image: url("png/minionBlue.png");
-    position: relative;
-
-    width: 32px;
-    height: 32px;
-    background-position: 0 0;
-    z-index: 3;
-    position: fixed;
-
-    top: 0;
-    left: 0;
-}
-
-.coin {
-    height: 16px;
-    width: 16px;
-
-    background-image: url('png/goldCoinSprite.png');
-    background-position: 0 0;
-    z-index: 9999;
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    transition: top .5s .3s;
-    animation: coinRotate 1s steps(8) infinite;
-
-    cursor: url(png/sword.cur), pointer;
-}
-
-@keyframes coinRotate {
-    100% {
-        background-position: 128px 0;
-    }
-}
-
-@keyframes minionWalk {
-
-    100% {
-        left: 640px
-    }
-
-
-    /*
-    0%{
-       left: 0;
-       transform: rotateY(0);
-    }
-    50%{
-        left:608px;
-        transform: rotateY(0);
-        
-    }
-    50.1%{
-        left:608px;
-        transform: rotateY(180deg);
-        
-        
-    }
-    99.9%{
-        left: 0;
-        transform: rotateY(180deg);
-    }
-    100%{
-        left:0;
-        transform: rotateY(0);
-       
-    }
-    */
-}
-
-.btnGameover {
-    position: fixed;
-    z-index: 7;
-}
 
 .bloodScreen {
     position: absolute;
@@ -473,7 +307,7 @@ canvas:last-of-type {
     width: 640px;
     height: 392px;
 
-    background-image: url(png/gameover.png);
+    background-image: url(https://i.postimg.cc/9FgyqMNk/gameover.png);
     background-size: contain;
 
     animation: bloodScreen 3s both linear;
@@ -485,6 +319,23 @@ canvas:last-of-type {
     }
 }
 
+.life {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("https://i.postimg.cc/rs9TQf8z/heart.png");
+    background-size: 40px 40px;
+    left: 140px;
+    top: 5px;
+    z-index: 8;
+    line-height: 40px;
+    font-size: 19px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+}
+
 /* .btnGameover{
     position: absolute;
     z-index: 10;
@@ -492,3 +343,8 @@ canvas:last-of-type {
     left: 10vh;
     cursor: url('png/sword.cur'), pointer;
 } */
+@keyframes coinRotate {
+    100% {
+        background-position: 128px 0;
+    }
+}
