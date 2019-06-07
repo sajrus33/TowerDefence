@@ -552,12 +552,12 @@ function tower(x = 0, y, dmgArea = 640, dmgSize = 10, dmgColor = "red", dmg = .1
 
                     if (this.targetElement != undefined) {
                         this.targetElement.minionHp -= this.dmg;
-                        this.sound.play();
+                        // this.sound.play();
 
                         if (this.targetElement.minionHp <= 0) {
                             this.targetElement.dead();
                             this.targetElement = undefined;
-                            this.sound.pause();
+                            // this.sound.pause();
                         }
                         this.whichFrame = 1;
                         this.x = this.xReset;
