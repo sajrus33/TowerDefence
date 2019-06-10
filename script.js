@@ -46,15 +46,6 @@ const constants = {
         this.canvas5.height = this.canvasHeight;
     },
     listenerFun: {
-        //                                                                                                                 FUNCTION
-        goldSelect: function () {
-            // console.log("took");
-
-            $(this).remove();
-            let coinSound = new Audio("audio/coinSound.wav");
-            coinSound.play();
-            goldObj.actualizeGold(minionSet.prize);
-        },
         //                                                                                                                  FUNCTION
         goldListenerRef: function () {
             $(".coin").hover(this.goldSelect);
@@ -62,17 +53,6 @@ const constants = {
         //                                            Gameover BloodScreen                                                  FUNCTION
         bloodScreen: function () {
             overlay.append('<div class="bloodScreen"></div>');
-        }
-    },
-    underFun: {
-        //                       delay() handmade                                                                           FUNCTION
-        pause: function (millis) {
-            let date = new Date();
-            let curDate = null;
-            do {
-                curDate = new Date();
-            }
-            while (curDate - date < millis);
         }
     }
 }
@@ -128,7 +108,6 @@ let towerSet = {
     // show/hide towers Menu                                                FUNCTION 
     toggleTowerMenu: function () {
         if (towerSet.towerMenuOpened) {
-            console.log("otworzone");
             constants.towerMenu.css({
                 'display': "none"
             });
@@ -137,7 +116,6 @@ let towerSet = {
             constants.towerMenu.css({
                 'display': "flex"
             });
-            console.log("niotworzone");
 
             towerSet.towerMenuOpened = true;
         }
@@ -367,6 +345,7 @@ let goldObj = {
     actualGold: 200,
     goldOnScreen: $(".goldAmount"),
     array: [],
+    coinSound : new Audio("audio/coinSound.wav"),
 
     actualizeGold: function (amount) {
         this.actualGold += amount;
@@ -422,8 +401,8 @@ function minionObj(leftOfMinion, topOfMinion, minionHp, whichMinion, speed = .35
             // minionSet.minionsArray.splice(this.whichMinion, 1);
             minionSet.minionsArray[this.whichMinion] = undefined;
             goldObj.array.push(new goldObj.Gold(6.5, this.x, this.y));
-            console.log(goldObj.array);
-            console.log("created coin on position: ", this.x, this.y);
+            // console.log(goldObj.array);
+            // console.log("created coin on position: ", this.x, this.y);
             // constants.listenerFun.goldListenerRef();
             this.canDie = false;
 
@@ -570,7 +549,7 @@ function tower(x = 0, y, dmgArea = 640, dmgSize = 10, dmgColor = "red", dmg = .1
                 this.whichFrame++;
             } else {
                 this.targetOutOfRange = true;
-                this.sound.pause();
+                // this.sound.pause();
             }
         }
         this.shoot();
@@ -588,6 +567,8 @@ function checkCanvasElements() {
             xPos > element.x &&
             xPos < element.x + element.width) {
             console.log("we got ya");
+           
+            goldObj.coinSound.play();
             goldObj.actualizeGold(element.amount);
             goldObj.array.splice(i, 1);
         }
@@ -722,7 +703,7 @@ function RespownSpot(minY, maxY, minX, maxX) {
 function createMinions() {
     if (!minionSet.minionsConstructed) {
         for (let i = 0; i < minionSet.waveSize[minionSet.whichWave] + 1; i++) {
-            let Respown = RespownSpot(-300, 0, 32, 250);
+            let Respown = RespownSpot(-200, 0, 32, 250);
             minionSet.minionsArray.push(new minionObj(Respown.y, Respown.x, minionSet.minionHp, minionSet.whichMinion));
             minionSet.whichMinion += 1;
         }
