@@ -1,339 +1,334 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-image: linear-gradient(-90deg, rgb(3, 3, 71), rgb(22, 22, 219), blue, rgb(22, 22, 219), rgb(3, 3, 71));
-    /* background-image: url('png/mapCenter.png'); */
-    /* background-size: 32px 32px; */
-    /* display: flex; */
-    /* flex-direction: column;
+  background-image: linear-gradient(
+    -90deg,
+    rgb(3, 3, 71),
+    rgb(22, 22, 219),
+    blue,
+    rgb(22, 22, 219),
+    rgb(3, 3, 71)
+  );
+  /* background-image: url('png/mapCenter.png'); */
+  /* background-size: 32px 32px; */
+  /* display: flex; */
+  /* flex-direction: column;
     align-items: center; */
-    /* overflow: hidden; */
+  /* overflow: hidden; */
 }
 
 /* TOWER RENDER */
 
 canvas {
-    /* background-color: transparent; */
-    z-index: 2;
-    position: absolute;
-    min-height: 320px;
-    min-width: 640px;
-    cursor: url(png/sword.cur), pointer;
+  /* background-color: transparent; */
+  z-index: 2;
+  position: absolute;
+  min-height: 320px;
+  min-width: 640px;
+  cursor: url(png/sword.cur), pointer;
 }
 
 /* TOWER RENDER */
 
 #cnv2 {
-    z-index: 3;
+  z-index: 3;
 }
 
 /* TOWER RENDER */
 
 #cnv3 {
-    z-index: 4;
+  z-index: 4;
 }
 
 /* TOWER RENDER */
 
 #cnv4 {
-    z-index: 6;
+  z-index: 6;
 }
 
 /*cnv4*/
 /* TOWER RENDER */
 canvas:last-of-type {
-    z-index: 5;
-    /* border-top: 32px solid rgba(0, 0, 0, 0.5); */
+  z-index: 5;
+  /* border-top: 32px solid rgba(0, 0, 0, 0.5); */
 }
 
 .gameWrapper {
-    margin: auto;
-    position: relative;
-    width: 640px;
-    height: 320px;
-    overflow: hidden;
-    z-index: 7;
+  margin: auto;
+  position: relative;
+  width: 640px;
+  height: 320px;
+  overflow: hidden;
+  z-index: 7;
 }
 
-.gameWrapper>button {
-    position: absolute;
-    z-index: 7;
+.gameWrapper > button {
+  position: absolute;
+  z-index: 7;
 
-    height: 40px;
-    width: 100px;
-    transform: translateX(10%);
-    margin: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, .6);
+  height: 40px;
+  width: 100px;
+  transform: translateX(10%);
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.6);
 
-    color: rgba(218, 165, 32, 1);
-    text-shadow: 3px 3px 10px #000000;
-    border-radius: 15px;
-    cursor: url(png/sword.cur), pointer;
-    /* display: none; */
+  color: rgba(218, 165, 32, 1);
+  text-shadow: 3px 3px 10px #000000;
+  border-radius: 15px;
+  cursor: url(png/sword.cur), pointer;
+  /* display: none; */
 }
 
 .btnGameover {
-    /* z-index: 7; */
-    left: 0;
+  /* z-index: 7; */
+  left: 0;
 }
 
 .resume {
-    z-index: 8;
-    top: 0;
-    left: 0;
+  z-index: 8;
+  top: 0;
+  left: 0;
 }
 
-.gameWrapper>span {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+.gameWrapper > span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .gameShader {
-    /* border-left: 32px solid rgba(0, 0, 0, .5);
+  /* border-left: 32px solid rgba(0, 0, 0, .5);
     border-right: 32px solid rgba(0, 0, 0, .5);
     border-top: 32px solid rgba(0, 0, 0, .5);
     border-bottom: 64px solid rgba(0, 0, 0, .5); */
-    z-index: 6;
+  z-index: 6;
 }
 
 .gameBackground {
-    z-index: 0;
-    background-color: transparent;
+  z-index: 0;
+  background-color: transparent;
 }
 
 .mainMenu {
-    position: absolute;
-    top: 0px;
-
+  position: absolute;
+  top: 0px;
 }
 
 .goldAmount {
-    box-sizing: border-box;
-    position: absolute;
-    top: 5px;
-    left: 484px;
-    width: 132px;
-    height: 40px;
-    font-size: 21px;
-    background-color: rgba(0, 0, 0, .6);
-    border: solid 2px grey;
-    z-index: 7;
-    line-height: 36px;
-    padding-left: 36px;
-    font-weight: bold;
-    color: rgba(218, 165, 32, 1);
+  box-sizing: border-box;
+  position: absolute;
+  top: 5px;
+  left: 484px;
+  width: 132px;
+  height: 40px;
+  font-size: 21px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: solid 2px grey;
+  z-index: 7;
+  line-height: 36px;
+  padding-left: 36px;
+  font-weight: bold;
+  color: rgba(218, 165, 32, 1);
 
-    text-shadow: 3px 3px 10px #000000;
-    pointer-events: none;
-
+  text-shadow: 3px 3px 10px #000000;
+  pointer-events: none;
 }
 
 .goldAmount::after {
-    content: '';
-    position: absolute;
-    left: 0px;
-    width: 32px;
-    top: 2px;
-    height: 32px;
-    background-image: url("https://i.postimg.cc/x1kMG2w1/gold-Coin-Sprite.png");
-    background-size: cover;
-    animation: coinRotate .618s steps(4) infinite;
-
+  content: "";
+  position: absolute;
+  left: 0px;
+  width: 32px;
+  top: 2px;
+  height: 32px;
+  background-image: url("https://i.postimg.cc/x1kMG2w1/gold-Coin-Sprite.png");
+  background-size: cover;
+  animation: coinRotate 0.618s steps(4) infinite;
 }
 
 .menuOpen {
-    position: absolute;
-    top: 5px;
-    left: 595px;
-    width: 40px;
-    height: 40px;
-    display: block;
-    background-color: black;
-    border-radius: 50%;
-    border: 2px gray solid;
-    cursor: url(png/sword.cur), pointer;
+  position: absolute;
+  top: 5px;
+  left: 595px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  background-color: black;
+  border-radius: 50%;
+  border: 2px gray solid;
+  cursor: url(png/sword.cur), pointer;
 
-    z-index: 7;
+  z-index: 7;
 }
 
-
 .menuOpen::after {
-    position: absolute;
-    content: "";
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    height: 10%;
-    background-color: gray;
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 10%;
+  background-color: gray;
 }
 
 .menuOpen::before {
-    position: absolute;
-    content: "";
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 10%;
-    height: 70%;
-    background-color: gray;
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10%;
+  height: 70%;
+  background-color: gray;
 }
 
 .gameMenu {
-    z-index: 8;
-    position: absolute;
-    left: 595px;
-    top: 45px;
-    display: none;
-    flex-direction: column;
-    height: 160px;
-    width: 40px;
-    background-color: transparent;
-    cursor: url(png/sword.cur), pointer;
-
-
+  z-index: 8;
+  position: absolute;
+  left: 595px;
+  top: 45px;
+  display: none;
+  flex-direction: column;
+  height: 160px;
+  width: 40px;
+  background-color: transparent;
+  cursor: url(png/sword.cur), pointer;
 }
 
-.gameMenu>.btnTower {
-    position: relative;
-    border: none;
-    flex-basis: 40px;
-    text-decoration: none;
-    background-image: url("https://i.postimg.cc/xjxX6ZyJ/towerAll.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, .6);
-    cursor: url(png/sword.cur), pointer;
-    outline: none;
+.gameMenu > .btnTower {
+  position: relative;
+  border: none;
+  flex-basis: 40px;
+  text-decoration: none;
+  background-image: url("https://i.postimg.cc/xjxX6ZyJ/towerAll.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: url(png/sword.cur), pointer;
+  outline: none;
 }
 
-.gameMenu>.btnTower::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: calc(-200% - 5px);
-    width: 200%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .6);
-    border: 1px solid gray;
-    display: none;
-    z-index: 8;
-
+.gameMenu > .btnTower::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(-200% - 5px);
+  width: 200%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid gray;
+  display: none;
+  z-index: 8;
 }
 
-.gameMenu>.btnTower:hover::after {
-    display: block;
+.gameMenu > .btnTower:hover::after {
+  display: block;
 }
 
-.gameMenu>.btnTower::before {
-    color: rgba(255, 189, 22, 0.9);
+.gameMenu > .btnTower::before {
+  color: rgba(255, 189, 22, 0.9);
 
-    text-shadow: 3px 3px 10px #000000;
-    content: "Cost: 50";
-    position: absolute;
-    top: 0;
-    left: calc(-200% - 5px);
-    height: 100%;
-    line-height: 40px;
-    padding-left: 5px;
-    font-size: 18px;
-    display: none;
-    z-index: 9;
-
+  text-shadow: 3px 3px 10px #000000;
+  content: "Cost: 50";
+  position: absolute;
+  top: 0;
+  left: calc(-200% - 5px);
+  height: 100%;
+  line-height: 40px;
+  padding-left: 5px;
+  font-size: 18px;
+  display: none;
+  z-index: 9;
 }
 
-.gameMenu>.btnTower:hover::before {
-    display: block;
+.gameMenu > .btnTower:hover::before {
+  display: block;
 }
 
-.gameMenu>.btnTower:focus {
-    flex-basis: 40px;
-    text-decoration: none;
-    background-image: url("https://i.postimg.cc/xjxX6ZyJ/towerAll.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    outline-offset: 1px;
+.gameMenu > .btnTower:focus {
+  flex-basis: 40px;
+  text-decoration: none;
+  background-image: url("https://i.postimg.cc/xjxX6ZyJ/towerAll.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  outline-offset: 1px;
 
-    background-color: rgba(218, 165, 32, .9);
+  background-color: rgba(218, 165, 32, 0.9);
 
+  background-origin: border-box;
 
-    background-origin: border-box;
-
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 
-.gameMenu>.btnTowerActive {
-    border: 3px solid goldenrod;
+.gameMenu > .btnTowerActive {
+  border: 3px solid goldenrod;
 
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }
 
 .btnTower2 {
-    background-position: -40px 0;
+  background-position: -40px 0;
 }
 
 .btnTower3 {
-    background-position: -80px 0;
+  background-position: -80px 0;
 }
 
 .btnTower4 {
-    background-position: -120px 0;
+  background-position: -120px 0;
 }
 
-
 .bloodScreen {
-    position: absolute;
-    left: 0;
-    top: -392px;
-    z-index: 10;
-    background-color: transparent;
-    width: 640px;
-    height: 392px;
+  position: absolute;
+  left: 0;
+  top: -392px;
+  z-index: 10;
+  background-color: transparent;
+  width: 640px;
+  height: 392px;
 
-    background-image: url(https://i.postimg.cc/9FgyqMNk/gameover.png);
-    background-size: contain;
+  background-image: url(https://i.postimg.cc/9FgyqMNk/gameover.png);
+  background-size: contain;
 
-    animation: bloodScreen 3s both linear;
+  animation: bloodScreen 3s both linear;
 }
 
 @keyframes bloodScreen {
-    100% {
-        top: 0;
-    }
+  100% {
+    top: 0;
+  }
 }
 
 .life {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-image: url("https://i.postimg.cc/rs9TQf8z/heart.png");
-    background-size: 40px 40px;
-    left: 140px;
-    top: 5px;
-    z-index: 8;
-    line-height: 40px;
-    font-size: 19px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-    border-radius: 50%;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url("https://i.postimg.cc/rs9TQf8z/heart.png");
+  background-size: 40px 40px;
+  left: 140px;
+  top: 5px;
+  z-index: 8;
+  line-height: 40px;
+  font-size: 19px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  border-radius: 50%;
 }
 
 /* .btnGameover{
@@ -344,7 +339,52 @@ canvas:last-of-type {
     cursor: url('png/sword.cur'), pointer;
 } */
 @keyframes coinRotate {
-    100% {
-        background-position: 128px 0;
-    }
+  100% {
+    background-position: 128px 0;
+  }
+}
+
+.displayNone {
+  display: none;
+}
+.menu {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(
+    -90deg,
+    rgb(3, 3, 71),
+    rgb(22, 22, 219),
+    blue,
+    rgb(22, 22, 219),
+    rgb(3, 3, 71)
+  );
+}
+.menu__info {
+  background-image: url("/png/info.png");
+  height: 160px;
+  width: 320px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.menu__start {
+  width: 272px;
+  height: 100px;
+  background-color: transparent;
+  border: none;
+  background-image: url("/png/button.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 5px black;
 }

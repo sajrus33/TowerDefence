@@ -2,7 +2,13 @@
 "use strict";
 
 const constants = {
+    //menu
+    menuBtn: document.querySelector(".menu__start"),
+    menuInfo: document.querySelector(".menu__info"),
+    menu: document.querySelector(".menu"),
+
     //  overlay
+    wrapper: document.querySelector(".gameWrapper"),
     btnMenu: $(".menuOpen"),
     towerMenu: $(".gameMenu"),
     btnResume: $('.resume'),
@@ -741,6 +747,15 @@ function animate() {
 
 // init Game propertys
 function init() {
+    constants.menuBtn.addEventListener('click',()=>{
+        console.log(this);
+        constants.menu.classList.toggle("displayNone");
+        constants.menuBtn.classList.toggle("displayNone");
+        constants.menuInfo.classList.toggle("displayNone");
+
+        constants.wrapper.classList.toggle("displayNone");
+
+    });
     // load constants OBJECT settings (canvas width, height)
     constants.init();
     // check context OBJECT console.log

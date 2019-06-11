@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <!-- 
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic&subset=latin,latin-ext' rel='stylesheet'
         type='text/css'> -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
+  <body>
+    <div class="menu">
+      <div class="menu__info"></div>
+      <button class="menu__start">start game</button>
+    </div>
+    <div class="gameWrapper displayNone">
+      <div class="life"></div>
 
-<body>
-    <div class="gameWrapper">
-        <div class="life"></div>
+      <button class="resume">next wave</button>
 
+      <div class="mainMenu">
+        <div class="goldAmount"></div>
+        <div class="menuOpen"></div>
+      </div>
 
-        <button class="resume">next wave</button>
+      <div class="gameMenu">
+        <button id="tower1" class="btnTower btnTower1"></button>
+        <button id="tower2" class="btnTower btnTower2"></button>
+        <button id="tower3" class="btnTower btnTower3"></button>
+        <button id="tower4" class="btnTower btnTower4"></button>
+      </div>
+      <canvas id="cnv" width="640" height="320px"></canvas>
+      <canvas id="cnv2" width="640" height="320px"></canvas>
+      <canvas id="cnv3" width="640" height="320px"></canvas>
+      <canvas id="cnv4" width="640" height="320px"></canvas>
+      <canvas id="cnv5" width="640" height="320px"></canvas>
 
-        <div class="mainMenu">
-            <div class="goldAmount"></div>
-            <div class="menuOpen"></div>
-        </div>
-
-        <div class="gameMenu">
-            <button id="tower1" class="btnTower btnTower1"></button>
-            <button id="tower2" class="btnTower btnTower2"></button>
-            <button id="tower3" class="btnTower btnTower3"></button>
-            <button id="tower4" class="btnTower btnTower4"></button>
-        </div>
-        <canvas id="cnv" width="640" height="320px"></canvas>
-        <canvas id="cnv2" width="640" height="320px"></canvas>
-        <canvas id="cnv3" width="640" height="320px"></canvas>
-        <canvas id="cnv4" width="640" height="320px"></canvas>
-        <canvas id="cnv5" width="640" height="320px"></canvas>
-
-        <span class="gameShader"></span>
-        <span class="gameBackground"></span>
+      <span class="gameShader"></span>
+      <span class="gameBackground"></span>
     </div>
 
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
 
     <script src="jquery.js"></script>
 
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>
