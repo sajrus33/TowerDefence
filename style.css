@@ -366,7 +366,7 @@ canvas:last-of-type {
   );
 }
 .menu__info {
-  background-image: url("/png/info.png");
+  background-image: url("png/info.png");
   height: 160px;
   width: 320px;
   background-size: cover;
@@ -378,7 +378,7 @@ canvas:last-of-type {
   height: 100px;
   background-color: transparent;
   border: none;
-  background-image: url("/png/button.png");
+  background-image: url("png/button.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
