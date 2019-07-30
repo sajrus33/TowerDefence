@@ -741,7 +741,7 @@ function animate() {
 // init Game propertys
 function init() {
     constants.menuBtn.addEventListener('click',()=>{
-        console.log(this);
+     
         constants.menu.classList.toggle("displayNone");
         constants.menuBtn.classList.toggle("displayNone");
         constants.menuInfo.classList.toggle("displayNone");
