@@ -404,7 +404,7 @@ function minionObj(leftOfMinion, topOfMinion, minionHp, whichMinion, speed = .35
         if (this.canDie) {
 
             minionSet.minionsArray[this.whichMinion] = undefined;
-            goldObj.array.push(new goldObj.Gold(minionSet.price, this.x, this.y));
+            goldObj.array.push(new goldObj.Gold((minionSet.price), this.x, this.y));
  
             this.canDie = false;
 
