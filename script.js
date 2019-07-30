@@ -1,6 +1,6 @@
 //constants OBJECT
 "use strict";
-
+//music https://www.youtube.com/watch?v=EQja4bK1k6c
 const constants = {
     //menu
     menuBtn: document.querySelector(".menu__start"),
@@ -80,7 +80,7 @@ let minionSet = {
     whichMinion: 0,
     minionsArray: [],
     minionHp: 32,
-    prize: 5,
+    prize: 7.5,
     waveSize: [3, 8, 12, 20, 32, 36, 47, 59,111,999],
     minionsConstructed: false,
     minionRunTime: 90, // 19 frames x 32px   it was 38bro
@@ -163,7 +163,7 @@ let context = {
     ctxCheck: function () {
         console.log(this.ctx, this.ctx2, this.ctx3, this.ctx4, this.ctx5);
     }
-    //music https://www.youtube.com/watch?v=EQja4bK1k6c
+    
 }
 //              map set
 const mapSet = {
@@ -398,18 +398,14 @@ function minionObj(leftOfMinion, topOfMinion, minionHp, whichMinion, speed = .35
     this.canDie = true;
     this.whichMinion = whichMinion;
     this.dx = speed;
-    // this.runTime = runTime/;
+
 
     this.dead = function () {
         if (this.canDie) {
-            // this.minionObj.remove();
-            console.log(this.whichMinion);
-            // minionSet.minionsArray.splice(this.whichMinion, 1);
+
             minionSet.minionsArray[this.whichMinion] = undefined;
-            goldObj.array.push(new goldObj.Gold(6.5, this.x, this.y));
-            // console.log(goldObj.array);
-            // console.log("created coin on position: ", this.x, this.y);
-            // constants.listenerFun.goldListenerRef();
+            goldObj.array.push(new goldObj.Gold(minionSet.price, this.x, this.y));
+ 
             this.canDie = false;
 
             let count = 0;
@@ -565,14 +561,14 @@ function tower(x = 0, y, dmgArea = 640, dmgSize = 10, dmgColor = "red", dmg = .1
 function checkCanvasElements() {
     var xPos = event.offsetX; // - canvas.left 
     var yPos = event.offsetY; // - canvas.top
-    // console.log(xPos, yPos, "befo");
+
     goldObj.array.forEach((element, i) => {
         // console.log(element, "inside of element");
         if (yPos > element.y &&
             yPos < element.y + element.height &&
             xPos > element.x &&
             xPos < element.x + element.width) {
-            console.log("we got ya");
+            
            
             goldObj.coinSound.play();
             goldObj.actualizeGold(element.amount);
@@ -583,10 +579,10 @@ function checkCanvasElements() {
 }
 //                                                     clicks
 function getPosOnCanvas(e) {
-    console.log(e);
+
     var xPos = e.offsetX; // - canvas.left 
     var yPos = e.offsetY; // - canvas.top
-    console.log(yPos, xPos);
+
     if (towerSet.choosenTower != null) {
         buildTower(yPos, xPos);
     }
@@ -678,8 +674,6 @@ function buildTower(yPos, xPos) {
         if (goldObj.canPay(cost)) {
             goldObj.actualGold -= cost;
             goldObj.goldOnScreen.text(goldObj.actualGold);
-            // console.log("place");
-            // overlay.append("<div class = '" + towerSet.choosenTower + "' style = 'left:" + xPos + "px; top:" + yPos + "px;' ></div>");
             towerSet.towersCoordinate.push(new tower(leftOfTowers, topOfTowers, towerRad, dmgSize, dmgColor, dmg, towerType, towerSet.whichTower, sound, pic));
             towerSet.towersCoordinate[towerSet.towersCoordinate.length - 1].draw();
             towerSet.whichTower++;
@@ -744,7 +738,6 @@ function animate() {
     // setInterval(animate, 1000 / constants.fps);
 }
 
-
 // init Game propertys
 function init() {
     constants.menuBtn.addEventListener('click',()=>{
@@ -770,8 +763,7 @@ function init() {
     setInterval(animate, 1000 / 30);
 }
 
-window.onload = init;
-// $(window).on("resize", overlayOffset.reSizeOffset);
+window.addEventListener("click",init);
 
 constants.canvas4.addEventListener("mousemove", checkCanvasElements, false); //false dodac w parametrach sprawdz! !!!!!!!
 constants.canvas4.addEventListener("click", getPosOnCanvas, false); //false dodac w parametrach sprawdz! !!!!!!!
@@ -817,174 +809,3 @@ constants.btnMenu.click(towerSet.toggleTowerMenu);
 
 
 
-
-
-//              gold comment defineproperty learning
-// let goldObj={};
-// Object.defineProperties(goldObj,{
-//     "goldAmount" : {value : 200, writable: true, enumerable: false, configurable: false},
-// });
-
-
-// //          DRAWROAD                                                                                                       FUNCTION
-// drawRoad: function (ctx = "ctx2") {
-//     //trzeba ctx ustawic na 2 ! out of order !
-//     let gameMapRoad = [
-//         //1 left right
-//         //2 bottom left
-//         //3 bottom right
-//         //4 bottom top
-//         //5 top left
-//         //6 top right    
-//         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //1
-//         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 2, 0, 0, 0, 0, 0, 0, //2
-//         1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 4, 0, 4, 0, 0, 0, 0, 0, 0, //3
-//         0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 6, 1, 1, 2, 0, 0, 0, //4
-//         0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, //5
-//         0, 0, 0, 0, 0, 6, 1, 1, 1, 1, 1, 5, 0, 0, 0, 0, 4, 0, 0, 0, //6
-//         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, //7
-//         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, //8
-//         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 1, 1, 1, //9
-//         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 //10
-//     ]
-
-//     for (let y = 0; y < mapHeight; y++) {
-//         for (let x = 0; x < mapWidth; x++) {
-//             switch (gameMapRoad[((y * mapWidth) + x)]) {
-//                 case 0:
-//                     context.ctx2.fillStyle = "transparent";
-//                     break;
-//                 case 1:
-//                     const proadLeftRight = context.ctx.createPattern(mapSet.roadLeftRight, "repeat");
-//                     context.ctx2.fillStyle = proadLeftRight;
-//                     break;
-
-//                 case 2:
-//                     const proadBottomLeft = context.ctx.createPattern(mapSet.roadBottomLeft, "repeat");
-//                     context.ctx2.fillStyle = proadBottomLeft;
-//                     break;
-
-//                 case 3:
-//                     const proadBottomRight = context.ctx.createPattern(mapSet.roadBottomRight, "repeat");
-//                     context.ctx2.fillStyle = proadBottomRight;
-//                     break;
-
-//                 case 4:
-//                     const proadBottomTop = context.ctx.createPattern(mapSet.roadBottomTop, "repeat");
-//                     context.ctx2.fillStyle = proadBottomTop;
-//                     break;
-
-//                 case 5:
-//                     const proadTopLeft = context.ctx.createPattern(mapSet.roadTopLeft, "repeat");
-//                     context.ctx2.fillStyle = proadTopLeft;
-//                     break;
-
-//                 case 6:
-//                     const proadTopRight = context.ctx.createPattern(mapSet.roadTopRight, "repeat");
-//                     context.ctx2.fillStyle = proadTopRight;
-//                     break;
-
-//                 default:
-
-//                     context.ctx2.fillStyle = "blue";
-//             }
-//             context.ctx2.fillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
-//         }
-//     }
-// }
-
-// //                                                      ADDING TOWER                                                FUNCTION
-// function buildTower() {
-//     if (choosenTower != null) {
-//         if ($(this).is(".road, .tower1, .tower2, .tower3") != true) {
-//             $(this).addClass(choosenTower);
-//             let towerOnMap = $(this);
-//             //set top, left of tower added
-//             let leftOfTowers = minionHalfSize + towerOnMap.offset().left;
-//             let topOfTowers = 12 + towerOnMap.offset().top;
-//             //settings towers
-//             let towerType;
-//             let towerName1 = "Archer",
-//                 towerName2 = "Mage",
-//                 towerName3 = "Artillery";
-//             let towerRad;
-//             let towerRad1 = 100,
-//                 towerRad2 = 80,
-//                 towerRad3 = 200;
-//             let dmgSize;
-//             let dmgSize1 = 1,
-//                 dmgSize2 = 1.5,
-//                 dmgSize3 = 0.5;
-//             let dmgColor;
-//             let dmgColor1 = "goldenrod",
-//                 dmgColor2 = "blue",
-//                 dmgColor3 = "black";
-//             let dmg;
-//             let dmg1 = .2,
-//                 dmg2 = .23,
-//                 dmg3 = .1;
-//             //set towerType
-//             if ($(this).hasClass('tower1')) {
-//                 towerType = towerName1;
-//                 towerRad = towerRad1;
-//                 dmgSize = dmgSize1;
-//                 dmgColor = dmgColor1;
-//                 dmg = dmg1;
-//             } else if ($(this).hasClass('tower2')) {
-//                 towerType = towerName2;
-//                 towerRad = towerRad2;
-//                 dmgSize = dmgSize2;
-//                 dmgColor = dmgColor2;
-//                 dmg = dmg2;
-//             } else if ($(this).hasClass('tower3')) {
-//                 towerType = towerName3;
-//                 towerRad = towerRad3;
-//                 dmgSize = dmgSize3;
-//                 dmgColor = dmgColor3;
-//                 dmg = dmg3;
-//             }
-//             towersCoordinate.push(new tower(leftOfTowers, topOfTowers, towerRad, dmgSize, dmgColor, dmg, towerType, whichTower));
-//             whichTower++;
-//         }
-//     }
-// }
-// //                                           mouse
-// let mouse = {
-//     x: undefined,
-//     y: undefined
-// }
-// window.addEventListener('mousemove', function (event) {
-//     mouse.x = event.x;
-//     mouse.y = event.y;
-// });
-
-// function createMinions(){
-//         $('div#overlay').append('<div class="minion minionDefault"></div>');
-//             console.log('wild minion appear');  
-//             leftOfMinion = minion.offset().left + minionHalfSize;
-//             topOfMinion = minion.offset().top + minionHalfSize;
-//             minionsArray.push(new minionObj(leftOfMinion,topOfMinion));
-//             minion = $('.minion');
-//             minionHp = 32;
-//             minionAlive = true;
-//             console.log(minionsArray);
-
-//     }
-
-
-
-
-/*
-//                                                        stop
-function pause() {
-        cancelAnimationFrame(requestId);
-        animateSet=false;
-}
-//                                                        start
-function start() {
-    if(animateSet==false){
-        requestAnimationFrame(animate);
-        animateSet=true;
-    }
-}
-*/
