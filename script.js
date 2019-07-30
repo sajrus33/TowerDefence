@@ -763,7 +763,7 @@ function init() {
     setInterval(animate, 1000 / 30);
 }
 
-window.addEventListener("click",init);
+window.addEventListener("load",init);
 
 constants.canvas4.addEventListener("mousemove", checkCanvasElements, false); //false dodac w parametrach sprawdz! !!!!!!!
 constants.canvas4.addEventListener("click", getPosOnCanvas, false); //false dodac w parametrach sprawdz! !!!!!!!
